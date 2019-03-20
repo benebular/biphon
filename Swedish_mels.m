@@ -12,8 +12,6 @@ clc;
 
 swedish_vowels_mels = 'kuronen_mel.xlsx';
 [num,txt] = xlsread(swedish_vowels_mels); %reads in the numbers as a matrix and the text as ana array from the spreadsheet
-all_AmEng = ('benfinal_GAedit.xls');
-[~,~,raw] = xlsread(all_AmEng);
 
 Mels = num;
 vowel_label = txt;
@@ -23,6 +21,7 @@ y = Mels(:,2);
 z = Mels(:,3);
 S = (600);
 s = S(:);
+str = txt;
 
 
 
@@ -37,6 +36,17 @@ xpos = [x];
 ypos = [y];
 labels = vowel_label;
 labelpoints(xpos, ypos, labels)
+set(gca, 'fontsize', 24)
+
+%% Plot the data
+
+figure('units','normalized','outerposition',[0 0 1 1], 'color','[1 1 1]')
+ts = textscatter3(x,y,z,str);
+set(ts, 'fontsize', 24)
+title('Swedish Vowels in Mels')
+xlabel('F1')
+ylabel('F2')
+zlabel('F3')
 set(gca, 'fontsize', 24)
 
 %% Measure the linear distances between specific points of interest
