@@ -1,9 +1,9 @@
-%% This script is intended to demonstrate a simple plotting of 3D point data. The dataset are frequency (Hz) measurements of formants F1, F2, and F3 of the Swedish and American English vowel spaces, from Kuronen (2000).
-% The data were then converted into Mels as a respresentation of subjective
-% distance. The .xlsx files with "..._mels" have the data reported in Mels
-% and are pulled in via this script.
-% Ben Lang
-% ben.lang@nyu.edu
+%% This script is intended to demonstrate a simple plotting of 3D point data for multiple data sets.
+% The datasets are frequency (Hz) measurements of formants F1, F2, and F3 of the Swedish and American English vowel spaces that have been converted into Mels.
+% Swedish data is from from Kuronen (2000). American English data is from Hillenbrand et al. (1995)
+% The data were then converted into Mels as a respresentation of subjective distance. The .xlsx files with "..._mels" have the data reported in Mels and are pulled in via this script.
+% Author: Ben Lang (2019)
+% Email: ben.lang@nyu.edu
 
 %% Clear all output, close all windows, and clear the command line
 
@@ -67,5 +67,8 @@ set(gca, 'fontsize', 24) % sets overall figure font size to 24
 % set(gca, 'fontsize', 24)
 
 %% Measure the linear distances between specific points of interest
+
+ptCloud = pointCloud(xyzPoints)
+[indices,dists] = findNearestNeighbors(ptCloud,point,K)
 
 
