@@ -8,23 +8,27 @@ clear all;
 close all;
 clc;
 
-%% Read in the Swedish vowel data and create necessary arrays and matrices as variables
+%% Read in the Swedish and American English vowel data and create necessary arrays and matrices as variables
 
-filename = 'kuronen_mel.xlsx';
-[num,txt] = xlsread(filename); %reads in the numbers as a matrix and the text as ana array from the spreadsheet
+swedish_vowels_mels = 'kuronen_mel.xlsx';
+[num,txt] = xlsread(swedish_vowels_mels); %reads in the numbers as a matrix and the text as ana array from the spreadsheet
+all_AmEng = ('benfinal_GAedit.xls');
+[~,~,raw] = xlsread(all_AmEng);
 
-Mels = num
-vowel_label = txt
+Mels = num;
+vowel_label = txt;
 
 x = Mels(:,1);
 y = Mels(:,2);
 z = Mels(:,3);
-S = ([600]);
+S = (600);
 s = S(:);
+
+
 
 %% Plot the data
 figure('units','normalized','outerposition',[0 0 1 1], 'color','[1 1 1]')
-scatter3(x, y, z, s, 'filled', 'd', 'MarkerEdgeColor','k'); % plots the data as an open dot for each point
+scatter3(x, y, z, s, 'filled', 'd', 'markeredgecolor','k'); % plots the data as an open dot for each point
 title('Swedish Vowels in Mels')
 xlabel('F1')
 ylabel('F2')
@@ -36,3 +40,4 @@ labelpoints(xpos, ypos, labels)
 set(gca, 'fontsize', 24)
 
 %% Measure the linear distances between specific points of interest
+
