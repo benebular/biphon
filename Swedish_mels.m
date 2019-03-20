@@ -23,5 +23,9 @@ z = Mels(:,3);
 %% Plot the data
 
 plot3(x, y, z, 'o'); % plots the data as an open dot for each point
+title('Swedish Vowels in Mels')
+xlabel('F1')
+ylabel('F2')
+zlabel('F3')
 
 %% Measure the linear distances between specific points of interest
