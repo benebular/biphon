@@ -68,7 +68,10 @@ set(gca, 'fontsize', 24) % sets overall figure font size to 24
 
 %% Measure the linear distances between specific points of interest
 
-ptCloud = pointCloud(xyzPoints)
-[indices,dists] = findNearestNeighbors(ptCloud,point,K)
+pts1 = [X1, Y1, Z1];
+pts2 = [X2, Y2, Z2];
+sqrt(sum((pts1 - pts2 ) .^ 2))
+or:
+norm(pts1 - pts2)
 
 
