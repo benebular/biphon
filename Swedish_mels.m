@@ -68,10 +68,12 @@ set(gca, 'fontsize', 24) % sets overall figure font size to 24
 
 %% Measure the linear distances between specific points of interest
 
-pts1 = [X1, Y1, Z1];
-pts2 = [X2, Y2, Z2];
-sqrt(sum((pts1 - pts2 ) .^ 2))
-or:
-norm(pts1 - pts2)
+% pts1 = [X1, Y1, Z1];
+% pts2 = [X2, Y2, Z2];
+% sqrt(sum((pts1 - pts2 ) .^ 2))
+% or:
+% norm(pts1 - pts2)
 
-
+pts1 = [x, y, z]
+pts2 = [x2, y2, z2]
+blob = sqrt(sum((pts1 - pts2).^2))
