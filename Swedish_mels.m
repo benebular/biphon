@@ -74,6 +74,24 @@ set(gca, 'fontsize', 24) % sets overall figure font size to 24
 % or:
 % norm(pts1 - pts2)
 
-pts1 = [x, y, z]
-pts2 = [x2, y2, z2]
-blob = sqrt(sum((pts1 - pts2).^2))
+% pts1 = [x, y, z]
+% pts2 = [x2, y2, z2]
+% blob = sqrt(sum((pts1 - pts2).^2))
+
+yy = num(1,:);
+barred_u = num(4,:);
+o1 = num(5,:);
+oe = num (6,:);
+
+e = num2(3,:);
+eh = num2(4,:);
+u = num2(9,:);
+oo = num2(10,:);
+
+norm1 = norm(yy - u)
+norm2
+
+
+%% K-nearest
+
+ptCloud = pointCloud(x)
