@@ -1,7 +1,9 @@
 %% This script is intended to demonstrate a simple plotting of 3D point data for multiple data sets.
 % The datasets are frequency (Hz) measurements of formants F1, F2, and F3 of the Swedish and American English vowel spaces that have been converted into Mels.
+% Mels are useful for incorporating the subjective nature of the perceptual space into data.
 % Swedish data is from from Kuronen (2000). American English data is from Hillenbrand et al. (1995)
-% The data were then converted into Mels as a respresentation of subjective distance. The .xlsx files with "..._mels" have the data reported in Mels and are pulled in via this script.
+% The .xlsx files with "..._mels" have the data reported in Mels and are pulled in via this script.
+% There's also a section for calculating distances between a few select vowels of interest using the norm function.
 % Author: Ben Lang (2019)
 % Email: ben.lang@nyu.edu
 
@@ -40,7 +42,24 @@ s = S(:); % vector inserted into variable that teh function for plotting uses
 str = txt;
 str2 = txt2;
 
+yy = num(2,:); % pull out just the coordinates for a single vowel
+barred_u = num(4,:);
+o1 = num(5,:);
+oe = num (6,:);
 
+e = num2(3,:);
+eh = num2(4,:);
+u = num2(9,:);
+oo = num2(10,:);
+
+yy_u = [yy;u]; % put two vowel coordinates alone in a variable to then calculate norm
+yy_oo = [yy;oo];
+barred_u_u = [barred_u;u];
+barred_u_oo = [barred_u;oo];
+e_o1 = [e;o1];
+e_oe = [e;oe];
+eh_o1 = [eh;o1];
+eh_oe = [eh;oe];
 
 %% Plot the data
 figure('units','normalized','outerposition',[0 0 1 1], 'color','[1 1 1]') % fullscreen figure, centered, white background
@@ -53,7 +72,17 @@ hold on %keeps first plot on the figure so you can add additional points
 scatter3(x2, y2, z2, s, 'filled', 'c','markeredgecolor','k'); % plots the American English data as a filled dot for each point
 text(x,y,z,txt,'FontSize',40,'Color','k') % plots Swedish phoneme on corresponding xyz coordinate as text, size 40, black
 text(x2,y2,z2,txt2,'FontSize',40,'Color','k') % plots American English phoneme on corresponding xyz coordinate as text, size 40, black
-set(gca, 'fontsize', 24) % sets overall figure font size to 24
+hold on
+plot3(yy_u(:,1), yy_u(:,2), yy_u(:,3),'LineWidth',3); % plot a line between two vowel coordinates of interest
+plot3(yy_oo(:,1), yy_oo(:,2), yy_oo(:,3),'LineWidth',3);
+plot3(barred_u_u(:,1), barred_u_u(:,2), barred_u_u(:,3),'LineWidth',3);
+plot3(barred_u_oo(:,1), barred_u_oo(:,2), barred_u_oo(:,3),'LineWidth',3);
+plot3(e_o1(:,1), e_o1(:,2), e_o1(:,3),'LineWidth',3);
+plot3(e_oe(:,1), e_oe(:,2), e_oe(:,3),'LineWidth',3);
+plot3(eh_o1(:,1), eh_o1(:,2), eh_o1(:,3),'LineWidth',3);
+plot3(eh_oe(:,1), eh_oe(:,2), eh_oe(:,3),'LineWidth',3);
+set(gca, 'XDir','reverse'); % changes the direction of the x-axis scale -- specifically necessary for vowel space visualization, the F1 label and F2 label need to start from the same zero point
+set(gca, 'fontsize', 24); % sets overall figure font size to 24
 
 %% Plot the data
 
@@ -66,32 +95,30 @@ set(gca, 'fontsize', 24) % sets overall figure font size to 24
 % zlabel('F3')
 % set(gca, 'fontsize', 24)
 
+% % Your two points
+% P1 = [0,0,0];
+% P2 = [13,-11,19];
+% 
+% % Their vertial concatenation is what you want
+% pts = [P1; P2];
+% 
+% % Because that's what line() wants to see    
+% line(pts(:,1), pts(:,2), pts(:,3))
+% 
+% % Alternatively, you could use plot3:
+% plot3(pts(:,1), pts(:,2), pts(:,3))
+
 %% Measure the linear distances between specific points of interest
 
-% pts1 = [X1, Y1, Z1];
-% pts2 = [X2, Y2, Z2];
-% sqrt(sum((pts1 - pts2 ) .^ 2))
-% or:
-% norm(pts1 - pts2)
+norm1 = norm(yy - u); % calculate distance between two 3D points -- two vowels
+norm2 = norm(yy - oo);
+norm3 = norm(barred_u - u);
+norm4 = norm(barred_u - oo);
+norm5 = norm(e - o1);
+norm6 = norm(e - oe);
+norm7 = norm(eh - o1);
+norm8 = norm(eh - oe);
 
-% pts1 = [x, y, z]
-% pts2 = [x2, y2, z2]
-% blob = sqrt(sum((pts1 - pts2).^2))
-
-yy = num(1,:);
-barred_u = num(4,:);
-o1 = num(5,:);
-oe = num (6,:);
-
-e = num2(3,:);
-eh = num2(4,:);
-u = num2(9,:);
-oo = num2(10,:);
-
-norm1 = norm(yy - u)
-norm2
-
-
-%% K-nearest
-
-ptCloud = pointCloud(x)
+norm_all = [norm1; norm2; norm3; norm4; norm5; norm6; norm7; norm8]; % make a matrix of the vowel norms
+vowel_label_distances = {'y - u'; 'y - oo'; 'barred_u - u'; 'barred_u - oo'; 'e - o1'; 'e - oe'; 'eh - o1'; 'eh - oe'}; % array of labels for the normed vowel relationship
+distances = table(vowel_label_distances, norm_all) % print a table to show the relationship in one column and the ultimate value
