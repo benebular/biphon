@@ -122,3 +122,19 @@ norm8 = norm(eh - oe);
 norm_all = [norm1; norm2; norm3; norm4; norm5; norm6; norm7; norm8]; % make a matrix of the vowel norms
 vowel_label_distances = {'y - u'; 'y - oo'; 'barred_u - u'; 'barred_u - oo'; 'e - o1'; 'e - oe'; 'eh - o1'; 'eh - oe'}; % array of labels for the normed vowel relationship
 distances = table(vowel_label_distances, norm_all) % print a table to show the relationship in one column and the ultimate value
+
+% cognitive architecture of speech perception
+% the signal is hard  for the comprehender
+% speech comprehension is dealing with tons of variation within and across speakers
+% behavioral categorical perception solves the problem
+% how is that instantiated in the brain
+% in phonetics, these the building blocks of the signal, show behavioral lit about VOT manipulations or F3 manipulations
+% how does the brain decode these? is there a fine-grained neural represenation of these signals?
+% we know the phoentic representations are really fine-grained, but does
+% the brain do the same thing?
+% represenationally, the behavior supports that the mind makes these
+% distinctions, but we want the brain behavior response
+
+% 96 unique combinations, 48 per set of 4
+
+
