@@ -15,9 +15,9 @@ clc;
 
 %% Read in the Swedish and American English vowel data and create necessary arrays and matrices as variables
 
-% Swedish
-swedish_vowels_mels = 'kuronen_mel.xlsx';
-[num,txt] = xlsread(swedish_vowels_mels); %reads in the numbers as a matrix and the text as ana array from the spreadsheet
+% formants
+formants = '/Users/ben/Documents/GitHub/bi_phon/qualtrics_data/biphon_vowels.xls';
+[num,txt] = xlsread(formants, "A_token","F1_A","F2_A","F3_A"); %reads in the numbers as a matrix and the text as ana array from the spreadsheet
 
 Mels = num; % rename variable
 vowel_label = txt;
@@ -26,12 +26,23 @@ x = Mels(:,1); % pulls single column of data into x variable
 y = Mels(:,2);
 z = Mels(:,3);
 
-% American English
-american_vowels_mels = 'hillenbrand_mels.xlsx';
-[num2,txt2] = xlsread(american_vowels_mels); %reads in the numbers as a matrix and the text as ana array from the spreadsheet
+% F_B
+F_B = '/Users/ben/Documents/GitHub/bi_phon/qualtrics_data/biphon_vowels.xls';
+[num2,txt2] = xlsread(F_B); %reads in the numbers as a matrix and the text as ana array from the spreadsheet
 
 Mels2 = num2; % rename variable
 vowel_label2 = txt2;
+
+x2 = Mels2(:,1); % pulls single column of data into x variable
+y2 = Mels2(:,2);
+z2 = Mels2(:,3);
+
+% F_X
+F_X = '/Users/ben/Documents/GitHub/bi_phon/qualtrics_data/biphon_vowels.xls';
+[num3,txt3] = xlsread(F_X); %reads in the numbers as a matrix and the text as ana array from the spreadsheet
+
+Mels2 = num3; % rename variable
+vowel_label2 = txt3;
 
 x2 = Mels2(:,1); % pulls single column of data into x variable
 y2 = Mels2(:,2);
