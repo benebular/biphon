@@ -130,7 +130,7 @@ distances = table(vowel_label_distances, norm_all) % print a table to show the r
 % how is that instantiated in the brain
 % in phonetics, these the building blocks of the signal, show behavioral lit about VOT manipulations or F3 manipulations
 % how does the brain decode these? is there a fine-grained neural represenation of these signals?
-% we know the phoentic representations are really fine-grained, but does
+% we know the phonetic representations are really fine-grained, but does
 % the brain do the same thing?
 % represenationally, the behavior supports that the mind makes these
 % distinctions, but we want the brain behavior response
